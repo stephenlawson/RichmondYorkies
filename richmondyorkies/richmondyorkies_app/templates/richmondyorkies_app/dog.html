@@ -1,0 +1,58 @@
+{% extends 'richmondyorkies_app/main.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="main-container">
+        <div class="header inverted">
+            <h1 class="">{{dog.headline}}</h1>
+            <p class="">{{dog.sub_headline}}</p>
+            {% for tag in dog.tags.all %}
+            <span class="tag">{{tag}}</span>
+            {% endfor %}
+        </div>
+        <div class="body">
+            <div class="content">
+                <article class="blog-post" style="margin-bottom: 20px;">
+                    <p>{{dog.body|safe}}</p>
+                    <button type="button" class="btn-site btn-link inverted" onclick="window.location.href='dog.link';">
+                        <span class='button_img'>
+                            <img class="btn-icon inverted" src="{% static 'richmondyorkies/assets/icons/link.png' %}"/>
+                        </span> 
+                        <span class='button_text'>
+                            Put down a deposit today!
+                        </span>   
+                    </button>
+                </article>
+            </div>
+            <div class="recommended">
+                <h3 class="projects">recommended</h3>
+                <div id="cards">
+                    {% for dog in dogs %}
+                    <a href="{% url 'dog' dog.slug %}" class="project-link">
+                    <div class="card-hover">
+                      <div class="card-content">
+                        <div class="card-image">
+                          <img class="img-project inverted" src="{{dog.thumbnail.url}}" alt="{{dog.headline}}"></img>
+                        </div>
+                        <div class="card-info-wrapper">
+                          <div class="card-info">
+                            <div class="card-info-title">
+                              <h3>{{dog.headline}}</h3>  
+                              <h4>{{dog.sub_headline}}</h4>
+                                {% for tag in dog.tags.all %}
+                                <span class="tag inverted">{{tag}}</span>
+                                {% endfor %}
+                            </div>    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </a>
+                    {% empty %}
+                    <h3>No puppies available at this time, please come back later.</h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

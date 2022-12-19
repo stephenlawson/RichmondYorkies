@@ -1,0 +1,62 @@
+{% extends 'richmondyorkies_app/main.html' %}
+{% load static %}
+{% block content %}
+<div class="about">
+    <div class="profile-photo-container">
+        <img class="profile-photo inverted" src="{% static 'richmondyorkies/assets/images/kristen_profile_photo.jpg' %}" alt="">
+    </div>   
+    <div class="about-me" >
+        <h1 id="about" class="section-headers">Welcome</h1>
+        <p class="about-text">
+            {{ about.about|safe }}
+        </p>
+    </div>
+    <div class="about-me" >
+      <h1 id="about" class="section-headers">More about the breed</h1>
+      <p class="about-text">
+          {{ about.more_about|safe }}
+      </p>
+  </div>
+</div>
+<h1 id="projects" class="section-headers">My Puppies</h1>
+<div class="card-container">
+    <div id="cards">
+        {% for dog in dogs %}
+        <a href="{% url 'dog' dog.slug %}" class="project-link">
+        <div class="card-hover">
+          <div class="card-content">
+            <div class="card-image">
+              <img class="img-project inverted" src="{{dog.thumbnail.url}}" alt="{{dog.headline}}"></img>
+            </div>
+            <div class="card-info-wrapper">
+              <div class="card-info">
+                <div class="card-info-title">
+                  <h3>{{dog.headline}}</h3>  
+                  <h4>{{dog.sub_headline}}</h4>
+                    {% for tag in dog.tags.all %}
+                    <span class="tag inverted">{{tag}}</span>
+                    {% endfor %}
+                </div>    
+              </div>
+            </div>
+          </div>
+        </div>
+        </a>
+        {% empty %}
+        <h3>No puppies available at this time, please come back later.</h3>
+        {% endfor %}
+    </div>
+</div>
+<h1 id="contact" class="section-headers">Contact Me</h1>
+<div class="form-container">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="">
+      <div class="form-wrapper">
+          {{ form }}
+          <button class="submit" type="submit">Submit</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock content %}

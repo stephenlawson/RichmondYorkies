@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="main-container" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Richmond Yorkies</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="{% static 'richmondyorkies/assets/css/style2.css' %}" />
+        <!-- Favicons -->
+        <link
+        rel="apple-touch-icon"
+        sizes="96x96"
+        href="{% static 'richmondyorkies/assets/icons/yorki-96.png' %}"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="{% static 'richmondyorkies/assets/icons/yorki-96.png' %}"
+      />
+  </head>
+  <body>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <h1 class="header-text">Richmond Yorkies</h1>
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                <a href="{% url 'home' %}">home</a>
+                </li>
+                <li>
+                <a href="{% url 'home' %}#about">about</a>
+                </li>
+                <li>
+                <a href="{% url 'home' %}#projects">dogs</a>
+                </li>
+                <li>
+                <a href="{% url 'home' %}#contact">contact</a>
+                </li>
+                <li>
+                  <!-- social media -->
+                  <ul class="social-icons">
+                    <li>
+                      <a href="https://www.facebook.com/profile.php?id=100079511635608">
+                        <img class="social-icon" src="{% static 'richmondyorkies/assets/icons/facebook.png' %}" >
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/kriss10247/">
+                        <img class="social-icon" src="{% static 'richmondyorkies/assets/icons/instagram.png' %}" >
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+            </ul>
+            <div id="dark-mode-container">
+              <img id="dark-mode-icon" class="invert" onclick="darkmodeFunction()" src="{% static 'richmondyorkies/assets/images/moon.png' %}" >
+            </div>
+        </div>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% endif %}
+    <div class="large-container">
+      {% block content %}
+          <!-- Content goes here -->
+      {% endblock content %}
+    </div>
+    <!-- javascript -->
+    <script src="{% static '/richmondyorkies/assets/js/index2.js' %}"></script>
+  </body>
+</html>
