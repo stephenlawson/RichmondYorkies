@@ -63,7 +63,7 @@ The project utilizes Linode to serve webpages with Apache2 and mod_wsgi, AWS S3 
 
 ### What I learned
 
-I learned a lot about the Django web framework and initializing and maintaining a Linux server for this application. There was also a lot I learned about AWS and the many serves it has to offer. Bootstrap was also a big help in making the templating much easier.
+I learned a lot about the Django web framework and initializing and maintaining a Linux server for this application. There was also a lot I learned about AWS and the many serves it has to offer. Bootstrap was also a big help in making the templating much easier. I also learned how to make a dynamic light/dark mode changer utilizing JS to easily switch the color pallet but now the colors of images.
 
 ### Continued development
 
