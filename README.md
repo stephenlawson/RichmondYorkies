@@ -1,5 +1,5 @@
 # Richmond Yorkies 
-## A Parti Yorkie breeding website for interest buyers
+## A Parti Yorkie breeding website for interested buyers
 
 A Python Django website for a party yorkie breeding business where customers can find information about the breed, available puppies, and make reservations to adopt a parti yorkie. The website also includes a section for the breeder to post updates and information about their breeding practices and any upcoming litters.
 
